@@ -42,6 +42,13 @@ Route::group(['prefix'=>'backend', 'namespace'=>'backend'],function() {
         Route::put('/categories/update', 'CategoryCtrl@update');
         Route::delete('/categories/soft-delete', 'CategoryCtrl@softDelete');
         Route::get('/categories/list/datatable', 'CategoryCtrl@listDataTable');
+
+        Route::get('/products', 'ProductCtrl@index');
+        Route::post('/products/create', 'ProductCtrl@store');
+        Route::get('/products/edit', 'ProductCtrl@edit');
+        Route::put('/products/update', 'ProductCtrl@update');
+        Route::delete('/products/soft-delete', 'ProductCtrl@softDelete');
+        Route::get('/products/list/datatable', 'ProductCtrl@listDataTable');
     });
     
 });
