@@ -36,6 +36,13 @@ class LoginCtrl extends Controller
                         'icon' => 'success',
                         'message' => 'Welcome '.$user->name
                     ]);
+                } else {
+                    return response([
+                        'success' => false,
+                        'title' => 'Error',
+                        'icon' => 'error',
+                        'message' => 'Email and password not match.'
+                    ]);
                 }
             } else {
                 return response([
