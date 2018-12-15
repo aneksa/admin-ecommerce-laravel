@@ -61,7 +61,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="product-category">Category</label>
-                                <select class="form-control" id="product-category" name="category">
+                                <select class="form-control" id="product-category" name="category" style="width: 100%; height:36px;">
                                 </select>
                             </div>
                         </div>
@@ -94,6 +94,46 @@
 @endsection
 @section('scripts')
 <script>
+$('#product-description').wysihtml5({
+    "stylesheets": false,
+    "image":false,
+    "link":false
+})
+$('#product-category').select2({
+    placeholder: "Select a category",
+    allowClear: true,
+    ajax: {
+        url: "/backend/products/category/list",
+        data: function (params) {
+            return {
+                q: params.term, // search term
+                page: params.page,
+                "_token": "{{ csrf_token() }}",
+            };
+        },
+        processResults: function (data, params) {
+            // parse the results into the format expected by Select2
+            // since we are using custom formatting functions we do not need to
+            // alter the remote JSON data, except to indicate that infinite
+            // scrolling can be used
+            params.page = params.page || 1;
+            return {
+                results: data.items,
+                pagination: {
+                    more: (params.page * 30) < data.total_count
+                }
+            };
+        },
+        cache: true
+    },
+    containerCssClass : "form-control",
+    dropdownParent: $("#product-form"),
+    
+}).change(function (e) {
+    if($(this).val()!='' && $('#product-action').text()=='true'){
+        $(this).valid(); //jquery validation script validate on change
+    }
+})
 $('#product-table').DataTable({
     'processing': true,
     'serverSide': true,
@@ -131,7 +171,6 @@ $('#product-table').DataTable({
         }
     ]
 })
-
 $('#product-form').validate({
     debug: true,
     focusInvalid: true, // do not focus the last invalid input
@@ -207,6 +246,11 @@ let productEdit = (id) => {
 
             document.getElementById('product-form').reset();
             $('#product-name').val(res.data.name);
+            $('#product-stock').val(res.data.stock);
+            if(res.data.category) {
+                $('#product-category').append($('<option>'+ res.data.category.name +'</option>').val(res.data.category.id)).trigger('change');
+            }
+            $('#product-description').val(res.data.description);
             $('#product-save-button').attr( "onclick", "javascript: productUpdate('"+ res.data.id +"');" );
             $('#product-modal').modal('show');
         }

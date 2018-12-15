@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="/themes/AdminLTE-2.4.5/bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="/themes/AdminLTE-2.4.5/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="/themes/AdminLTE-2.4.5/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="/themes/AdminLTE-2.4.5/bower_components/select2/dist/css/select2.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/themes/AdminLTE-2.4.5/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -166,7 +170,10 @@
 <script src="/themes/AdminLTE-2.4.5/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/themes/AdminLTE-2.4.5/dist/js/demo.js"></script>
-<script>
+<!-- Select2 -->
+<script src="/themes/AdminLTE-2.4.5/bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="/themes/AdminLTE-2.4.5/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script><script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
   })
