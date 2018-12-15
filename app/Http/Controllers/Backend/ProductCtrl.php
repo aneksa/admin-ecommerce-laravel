@@ -83,7 +83,7 @@ class ProductCtrl extends Controller
                     'updated_at' => Carbon::now('Asia/Jakarta')
                 ]);
             } else {
-                throw new \Exception('Category not found.');
+                throw new \Exception('Product not found.');
             }
             DB::commit();
             if($tmpProduct->cover != $cover) {
@@ -94,7 +94,7 @@ class ProductCtrl extends Controller
             return response([
                 'title' => 'Success',
                 'icon' => 'success',
-                'message' => 'Category has been successfully updated'
+                'message' => 'Product has been successfully updated'
             ]);
         } catch (\Exception $e) {
             DB::rollback();
@@ -121,13 +121,13 @@ class ProductCtrl extends Controller
                     'deleted_at' => Carbon::now('Asia/Jakarta')
                 ]);
             } else {
-                throw new \Exception('Category not found.');
+                throw new \Exception('Product not found.');
             }
             DB::commit();
             return response([
                 'title' => 'Success',
                 'icon' => 'success',
-                'message' => 'Category has been successfully deleted'
+                'message' => 'Product has been successfully deleted'
             ]);
         } catch (\Exception $e) {
             DB::rollback();
@@ -157,7 +157,7 @@ class ProductCtrl extends Controller
             ->whereNull('deleted_at')
             ->where('name', 'like', '%'.$request->search['value'].'%')
             ->orderBy('id', 'desc')
-            ->select('id', 'name');
+            ->select('id', 'name', 'stock');
         $total = $queries->count();
         return response([
             'draw'              => $request->draw,

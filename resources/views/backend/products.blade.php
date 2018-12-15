@@ -25,6 +25,7 @@
                 <thead>
                 <tr>
                   <th>Name</th>
+                  <th>Stock</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -144,6 +145,9 @@ $('#product-table').DataTable({
     'columns': [
         {
             'data': 'name'
+        },
+        {
+            'data': 'stock'
         },
         {
             'data': null,
