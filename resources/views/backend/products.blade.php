@@ -24,9 +24,10 @@
               <table id="product-table" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Stock</th>
-                  <th>Action</th>
+                    <th>Cover</th>
+                    <th>Name</th>
+                    <th>Stock</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -96,10 +97,10 @@
 @section('scripts')
 <script>
 $('#product-description').wysihtml5({
-    "stylesheets": false,
-    "image":false,
-    "link":false
+    "font-styles": true, 
+    "image": true
 })
+// CKEDITOR.replace('product-description')
 $('#product-category').select2({
     placeholder: "Select a category",
     allowClear: true,
@@ -143,6 +144,18 @@ $('#product-table').DataTable({
         type: 'GET',
     },
     'columns': [
+        {
+            'data': null,
+            'render': function(data,type,row,meta) {
+                if(data.cover) {
+                    return `
+                        <img src="/`+data.cover+`" width="50" height="50">
+                    `
+                } else {
+                    return ``
+                }
+            }
+        },
         {
             'data': 'name'
         },

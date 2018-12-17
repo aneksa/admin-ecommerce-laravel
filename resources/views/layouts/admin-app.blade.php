@@ -173,7 +173,8 @@
 <!-- Select2 -->
 <script src="/themes/AdminLTE-2.4.5/bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
-<script src="/themes/AdminLTE-2.4.5/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script><script>
+<script src="/themes/AdminLTE-2.4.5/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
   })

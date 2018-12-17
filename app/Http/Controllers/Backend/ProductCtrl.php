@@ -157,7 +157,7 @@ class ProductCtrl extends Controller
             ->whereNull('deleted_at')
             ->where('name', 'like', '%'.$request->search['value'].'%')
             ->orderBy('id', 'desc')
-            ->select('id', 'name', 'stock');
+            ->select('id', 'cover', 'name', 'stock');
         $total = $queries->count();
         return response([
             'draw'              => $request->draw,
