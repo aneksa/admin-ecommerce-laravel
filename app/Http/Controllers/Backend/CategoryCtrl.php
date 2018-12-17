@@ -23,6 +23,7 @@ class CategoryCtrl extends Controller
         try {
             DB::table('categories')->insert([
                 'name' => $request->name,
+                'code' => $request->code,
                 'created_at' => Carbon::now('Asia/Jakarta')
             ]);
             DB::commit();
@@ -57,6 +58,7 @@ class CategoryCtrl extends Controller
             if($category->count()) {
                 $category->update([
                     'name' => $request->name,
+                    'code' => $request->code,
                     'updated_at' => Carbon::now('Asia/Jakarta')
                 ]);
             } else {
@@ -112,7 +114,7 @@ class CategoryCtrl extends Controller
             ->whereNull('deleted_at')
             ->where('name', 'like', '%'.$request->search['value'].'%')
             ->orderBy('id', 'desc')
-            ->select('id', 'name');
+            ->select('id', 'name', 'code');
         $total = $queries->count();
         return response([
             'draw'              => $request->draw,

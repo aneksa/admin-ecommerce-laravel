@@ -25,6 +25,7 @@
                 <thead>
                 <tr>
                   <th>Name</th>
+                  <th>Code</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -57,6 +58,10 @@
                         <label class="control-label" for="category-name">Name</label>
                         <input type="text" class="form-control" id="category-name" name="name" placeholder="Enter category name">
                     </div>
+                    <div class="form-group">
+                        <label class="control-label" for="category-code">Code</label>
+                        <input type="text" class="form-control" id="category-code" name="code" placeholder="Enter category code">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -81,6 +86,9 @@ $('#category-table').DataTable({
     'columns': [
         {
             'data': 'name'
+        },
+        {
+            'data': 'code'
         },
         {
             'data': null,
@@ -115,6 +123,7 @@ $('#category-form').validate({
     ignore: "",
     rules: {
         name: { required: true },
+        code: { required: true }
     },
     highlight: function (element, errorClass, validClass) {
         // console.log();
@@ -184,6 +193,7 @@ let categoryEdit = (id) => {
 
             document.getElementById('category-form').reset();
             $('#category-name').val(res.data.name);
+            $('#category-code').val(res.data.code);
             $('#category-save-button').attr( "onclick", "javascript: categoryUpdate('"+ res.data.id +"');" );
             $('#category-modal').modal('show');
         }
