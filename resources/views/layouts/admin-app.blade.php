@@ -127,11 +127,11 @@
             <i class="fa fa-shopping-cart"></i> <span>Products</span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="/backend/orders">
             <i class="fa fa-dollar"></i> <span>Orders</span>
           </a>
-        </li>
+        </li> -->
       </ul>
     </section>
     <!-- /.sidebar -->
