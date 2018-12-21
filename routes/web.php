@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function() {
+    return redirect('/backend');
+});
 Route::group(['prefix'=>'backend', 'namespace'=>'Backend'],function() {
     Route::get('/', function() {
         if(Auth::guard('admin')->check()) {
