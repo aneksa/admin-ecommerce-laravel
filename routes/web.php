@@ -10,12 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::group(['namespace'=>'Frontend'], function() {
-    Route::get('/', 'HomeCtrl@index');
-    Route::post('/login', 'LoginCtrl@login');
-});
-
 Route::group(['prefix'=>'backend', 'namespace'=>'Backend'],function() {
     Route::get('/', function() {
         if(Auth::guard('admin')->check()) {
